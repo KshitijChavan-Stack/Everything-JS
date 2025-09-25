@@ -32,3 +32,32 @@ const myFunc = function () {
 
 console.log(typeof heroObj);
 console.log(typeof bignum);
+
+// *******************************************************
+
+// Stack (Primitive data types) and Heap (Non-primitive data types)
+// stack give copy, heap give reference(orignal value chanege hota hai)
+
+let ytName = "codehere";
+
+let anotherYtName = ytName; // here we are only passing the copy values
+anotherYtName = "codethere"; // so even we chnage it our reference giving ytName dont chamge
+
+console.log(ytName);
+console.log(anotherYtName);
+
+// Goes into Heap
+
+let user = {
+  id: 1,
+  name: "harshit",
+  upiId: "harshit@okaxis",
+};
+
+let admin = user; // here we are passing the reference of user object
+
+console.log(user);
+
+admin.name = "codewithharshit"; // so even we change it our reference giving user also chamge
+
+console.log(user);
