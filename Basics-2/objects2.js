@@ -36,7 +36,7 @@ const obj2 = { 3: "c", 4: "d" };
 // there is a problem here .... object under object
 
 // here is what we can do to combine the objects
-// const obj3 = Object.assign({}, obj1, obj2); // (targert,source)
+const obj5 = Object.assign({}, obj1, obj2); // (targert,source)
 // console.log(obj3);
 
 // but most of time we need to use this method
@@ -47,8 +47,30 @@ console.log(Object.keys(tinderUser));
 console.log(Object.values(tinderUser));
 
 console.log(Object.entries(tinderUser));
-// gives each key and value in a array
+// gives each key and value in a array format
 
 // if we can ask about any value to objects
 console.log(tinderUser.hasOwnProperty("id"));
 // gives ether true or false
+
+// Destructuring Objects
+console.log("**********************************************");
+
+const course = {
+  courseNane: "JS",
+  price: "999",
+  courseInstructer: "Hitesh",
+};
+
+// this is the syntx for dectructuring
+// we can also give a name as per we want to the accessed key !!
+const { courseInstructer: instructer } = course;
+
+console.log(instructer);
+
+// Only to Understad the API structure JSON
+// {
+//   "name" : "rajesh",
+//   "courseName": "JS",
+//  " price": "999"
+// }
