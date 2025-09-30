@@ -31,3 +31,27 @@ if (Object.keys(obj).length === 0) {
   console.log("empty object");
 }
 // **************************************************
+// Nullish coalescing operator (??): only made for null & undefined
+
+let val1;
+// which ever comes first gets assigned and this is becoz if anyone of the
+// value is null then the another value that has something gets assign
+// val1 = 5 ?? 10;
+
+// another example with null
+// val1 = null ?? 10; // 10 can also be a function
+// val1 = undefined ?? 15;
+
+// which ever the first value we get !
+val1 = null ?? 14 ?? 20;
+// we can also say this as fallback
+
+console.log(val1); //have 10,15,14
+
+// Terniary Operator********************
+// Syntax
+// condition ? true : false
+
+const iceTeaPrice = 100;
+
+iceTeaPrice >= 80 ? console.log("zyda hogya ab") : console.log("chaljayga");
