@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Events</title>
+</head>
+<body style="background-color: #414141; color: #fff;">
+    <h2>Amazing Images</h2>
+    <div>
+        <ul id="images">
+        <li><img width="200px" id="mountain" src="https://images.pexels.com/photos/1366919/pexels-photo-1366919.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="mountain"></li>
+        
+        <li><img width="200px" id="ocean" src="https://images.pexels.com/photos/1032650/pexels-photo-1032650.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="ocean"></li>
+        
+        <li><img width="200px" id="forest" src="https://images.pexels.com/photos/1179229/pexels-photo-1179229.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="forest"></li>
+        
+        <li><img width="200px" id="sunset" src="https://images.pexels.com/photos/1738986/pexels-photo-1738986.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="sunset"></li>
+        
+        <li><img width="200px" id="city" src="https://images.pexels.com/photos/1519088/pexels-photo-1519088.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="city"></li>
+        
+        <li><img width="200px" id="nature" src="https://images.pexels.com/photos/1287145/pexels-photo-1287145.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="nature"></li>
+        
+        <li><a style="color: aliceblue;" href="https://google.com"
+        id="google">Google</a></li>
+    </ul>
+    </div>
+</body>
+<script>
+    // javascript is sequential run lang
+    // events is one of the exception from that
+
+    // second approch
+    // document.getElementById("city").onclick = function(){
+    //     alert("city clicked")
+    // }
+
+    // attachEvent()
+    // jQuery - on
+
+    // document.getElementById("city").addEventListener('click',function(){
+    //     alert("City clicked again")
+    // },
+    // false)
+
+    // type of events,timestamp,defaultPrevented(change the default behaviours)
+    // target , toElement.srcElement, currentTarget
+    // clientX,clientY,sceenX,screenY
+    // altkey,ctrlkey,shiftkey,keycode (a - keycode,etc)
+
+    // event object
+    document.getElementById("city").addEventListener('click',function(e){
+        console.log(e);
+        // pointer event
+        // gives us all the event details
+    },false) // event bubbling
+    // default false
+
+
+    // event propogation
+    // two context - event bubbling and capturing
+    
+    // clicked any ul 
+    document.getElementById("images").addEventListener('click',function(){
+          console.log("clicked inside the UL");
+          
+    },false)
+
+    // both will be active as this is inside UL only
+    document.getElementById("city").addEventListener('click',function(e){
+          console.log("clicked city ");
+          // if we dont inner and outer to be seperate 
+          // we can do this 
+          e.stopPropagation() // stop the bubble
+          
+    },false)// bubbling niche se upar (inside to out)
+    // event propgation - bubbling
+    // but in capturing out to in is done first ul clicked and then city
+    // ture -> bubbling false -> capturing
+
+    document.getElementById("google").addEventListener('click',function(e){
+        e.preventDefault() // this will not let it redirect
+        e.stopPropagation() // also stop bubbling
+        console.log("google clicked");
+    },false)
+
+
+    // when we click on a image it will disapperar
+
+    document.querySelector("#images").addEventListener('click',(e)=>{
+       // console.log(e.target); // gives us from which event it is coming
+        console.log(e.target.parentNode); // when we want the parent of the target(complete li is given)
+        console.log(e.target.tagName);// we can check which one we are removing by the tag name
+        if (e.target.tagName === 'IMG') {// we need to check only if it is image then only remove 
+            console.log(e.target.id);
+            let removeIt = e.target.parentNode
+            removeIt.remove()
+        }
+
+        
+         // another method
+       // removeIt.parentNode.removeChild(removeIt)
+    },false)
+
+</script>
+</html>
