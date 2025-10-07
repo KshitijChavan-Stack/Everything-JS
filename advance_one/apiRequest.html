@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body style="background-color: #212121; color: #fff;"> 
+    Value	State	Description
+0	UNSENT	Client has been created. open() not called yet.
+1	OPENED	open() has been called.
+2	HEADERS_RECEIVED	send() has been called, and headers and status are available.
+3	LOADING	Downloading; responseText holds partial data.
+4	DONE	The operation is complete.
+
+</body>
+<script>
+    // xmlhttprequest(Older version of API call)
+
+    const xmlhttprequest = new  XMLHttpRequest()
+    const reqUrl = 'https://randomuser.me/api/'
+    xmlhttprequest.open('GET',reqUrl)
+    
+    xmlhttprequest.send()
+    xmlhttprequest.onreadystatechange = function() {
+        console.log(xmlhttprequest.readyState);
+        if (xmlhttprequest.readyState === 4) {
+            const data = this.responseText // this is current context
+            console.log(data); 
+
+            //  const res = JSON.parse(data) // JSON type parsing becoz the data comes in string format
+            // console.log(res.results[0].gender);
+        }   
+    }
+</script>
+</html>
