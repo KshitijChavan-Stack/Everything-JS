@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Closure aur Chai</title>
+  </head>
+  <body></body>
+  <script>
+    // lexical scoping
+    function init() {
+      // outer function scope
+      let name = "Mozilla";
+      function displayName() {
+        // but if have anything in this inner1 that cannot be shared among the another child
+        // child -> 1
+        // this is a inner function
+        console.log("Inner 1->", name); // it have access to the outer function elements
+      }
+      function displayNameTwo() {
+        // child -> 2
+        // this is a inner function 2
+        console.log("inner 2->", name); // this too have access to the outer functions
+      }
+      displayName();
+    }
+    init();
+
+    // closure
+
+    function makeFunc() {
+      const name = "Mozilla";
+      function displayName() {
+        console.log(name);
+      }
+      // when we return a function not just the executional scope but also the
+      // lexical scope is returned
+      return displayName;
+    }
+
+    // when we assign the function to the variable the whole
+    // lexical scope goes to it not just the inner function excetional context
+    const myFunc = makeFunc();
+    myFunc();
+  </script>
+</html>
